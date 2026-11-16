@@ -1,0 +1,1 @@
+真实文件提供range返回；restore异步accepted、手工complete切ready，advance显式移动时钟。当前manager每人恢复并把pending当ready，RangeReader不处理资格到期和deadline。
