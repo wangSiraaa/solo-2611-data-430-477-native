@@ -1,0 +1,1 @@
+Device以真实pread/pwrite和单扇区锁提供整sector原子性。ByteWriter的RMW跨两次设备调用，ByteReader也无整个请求读视图。无需块设备权限。
