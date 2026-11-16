@@ -1,0 +1,1 @@
+SQLite会话池起点。Session持有真实ATTACH连接；Query可在行边界暂停。只用于隔离测试数据库。probe展示归还后TEMP泄漏；取消/活跃游标需要在补充测试中覆盖。
