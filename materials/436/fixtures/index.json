@@ -1,0 +1,98 @@
+{
+  "fee53a18d32820613c0527aa79be5cb30173c823a9b448fa4817767cc84c6f03": {
+    "pack": "a.pack",
+    "offset": 0,
+    "length": 19,
+    "kind": "full",
+    "size": 11,
+    "base": null
+  },
+  "ca505bc4d562eed2fe8e6842bc345a244a1ffa9b01be21cad66f5f1de6a71dfe": {
+    "pack": "a.pack",
+    "offset": 19,
+    "length": 18,
+    "kind": "delta",
+    "size": 12,
+    "base": "fee53a18d32820613c0527aa79be5cb30173c823a9b448fa4817767cc84c6f03"
+  },
+  "0195a4159bc218262dd5909fa56aaec9ef13046c82db3da8098737d180aa24ee": {
+    "pack": "b.pack",
+    "offset": 0,
+    "length": 18,
+    "kind": "delta",
+    "size": 12,
+    "base": "fee53a18d32820613c0527aa79be5cb30173c823a9b448fa4817767cc84c6f03"
+  },
+  "78f0ecf592b88bf74be7e2c4104830cece81041dd281023a94f43a1061e36ccb": {
+    "pack": "b.pack",
+    "offset": 18,
+    "length": 18,
+    "kind": "delta",
+    "size": 13,
+    "base": "0195a4159bc218262dd5909fa56aaec9ef13046c82db3da8098737d180aa24ee"
+  },
+  "e484eb1e35fc2721c865d3ae9bfe6da7aecee17fa898d76ad00baa9d264b7ee6": {
+    "pack": "b.pack",
+    "offset": 36,
+    "length": 84,
+    "kind": "full",
+    "size": 65536,
+    "base": null
+  },
+  "7737c41ada0fb0bb05c060d16abbafe6bbb0068d6b5cd3d0d7f19403dcbaf9bf": {
+    "pack": "b.pack",
+    "offset": 120,
+    "length": 85,
+    "kind": "full",
+    "size": 65536,
+    "base": null
+  },
+  "3bfe9d7180528518bf1ce1f63ee49ebb6239975946b82656f9ec6fae4efcdc15": {
+    "pack": "b.pack",
+    "offset": 205,
+    "length": 85,
+    "kind": "full",
+    "size": 65536,
+    "base": null
+  },
+  "f0af1efeb6d10b15caee7f8818d1f168e0d4321f8358bd9f9632db1480d3d521": {
+    "pack": "b.pack",
+    "offset": 290,
+    "length": 85,
+    "kind": "full",
+    "size": 65536,
+    "base": null
+  },
+  "a376eb7e178a9adc2aefd5f6e7e971154f600a196ed5aebd3a535ef23e242066": {
+    "pack": "b.pack",
+    "offset": 375,
+    "length": 85,
+    "kind": "full",
+    "size": 65536,
+    "base": null
+  },
+  "91e5a0678f272dd0d69fa06bd11cac439982ae3be28609f3e19cab25fc02beaf": {
+    "pack": "b.pack",
+    "offset": 460,
+    "length": 85,
+    "kind": "full",
+    "size": 65536,
+    "base": null
+  },
+  "0168583db3408986aa4191f7c22b8a4689c77961eaf1ae1991522d743262b8dc": {
+    "pack": "b.pack",
+    "offset": 545,
+    "length": 85,
+    "kind": "full",
+    "size": 65536,
+    "base": null
+  },
+  "6a7179a24e5768d02adb19ef530216b83ab86b3a5a86805131c702d63d630faa": {
+    "pack": "b.pack",
+    "offset": 630,
+    "length": 85,
+    "kind": "full",
+    "size": 65536,
+    "base": null
+  }
+}
