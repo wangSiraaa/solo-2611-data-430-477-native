@@ -1,5 +1,6 @@
 [
   {
+    "id": "new-york",
     "lhs": [
       "new",
       "york"
@@ -9,6 +10,7 @@
     ]
   },
   {
+    "id": "machine-learning",
     "lhs": [
       "machine",
       "learning"
