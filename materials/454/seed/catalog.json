@@ -1,0 +1,18 @@
+{
+  "source": "frozen-A",
+  "rows": 5,
+  "pages": {
+    "a": {
+      "rows": 1,
+      "sha256": "fa75adefa120b56063eb23e0e2fcd0c665c611cf719e443db596210313639615"
+    },
+    "b": {
+      "rows": 1,
+      "sha256": "eb09db8d97d630c0a3c85eefcb4c46f90e75b9a59be15d4018b2d962750415f8"
+    },
+    "c": {
+      "rows": 3,
+      "sha256": "dc6e5039931c72fc9ef40fd694d4ab80be3ad4886f01f621f38154570e270016"
+    }
+  }
+}
