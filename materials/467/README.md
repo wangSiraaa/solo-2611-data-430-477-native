@@ -1,0 +1,1 @@
+采集调度器目前只对首个限流域收费。ControlledTransport允许控制完成顺序；ThreadTransport运行真实调用函数。域费用只在请求开始发送时消耗。
