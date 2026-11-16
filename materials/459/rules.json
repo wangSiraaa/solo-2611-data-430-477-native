@@ -1,0 +1,20 @@
+[
+  {
+    "lhs": [
+      "new",
+      "york"
+    ],
+    "rhs": [
+      "nyc"
+    ]
+  },
+  {
+    "lhs": [
+      "machine",
+      "learning"
+    ],
+    "rhs": [
+      "ml"
+    ]
+  }
+]
