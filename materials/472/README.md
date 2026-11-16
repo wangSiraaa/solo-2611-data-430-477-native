@@ -1,0 +1,1 @@
+不可变SST保存带全局seq的put/delete/add/mul。普通put读取正确；get只处理最近一条，partial compact把局部operand错当完整值。输入材料由probe在临时目录创建。
