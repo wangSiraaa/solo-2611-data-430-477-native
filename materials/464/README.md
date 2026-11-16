@@ -1,0 +1,1 @@
+三个真实TCP副本，各保存tag/value并拒绝旧tag覆盖。当前quorum会等待executor结束且read没有repair。probe创建临时服务并自动关闭。可把存储替换SQLite但需真实RPC。
