@@ -1,0 +1,1 @@
+真实Wasmtime39解释WAT，identity每次process memory.grow后返回输入descriptor。bad_descriptor让正文指向内存末尾外，read静默截断，当前decoder误接受。second_trap第一批已向Sink写complete，第二批trap，留下错误完整前缀。probe在临时目录运行，不访问凭据或外部服务。
