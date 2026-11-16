@@ -1,0 +1,1 @@
+迷你Avro式类型系统，非通用Avro实现。Catalog真实SQLite版本，Resolver当前忽略ref.version总取latest；兼容只比最新且record只查字段存在，不检查嵌套类型。
