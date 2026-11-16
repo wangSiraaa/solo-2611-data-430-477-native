@@ -1,0 +1,1 @@
+内存broker模拟单分区真实append日志。当前支持串行事务与重试序号，但事务/序号identity丢失epoch，consumer也跨过开放事务。接口字段可扩展。
