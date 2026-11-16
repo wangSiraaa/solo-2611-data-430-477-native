@@ -1,0 +1,26 @@
+{
+  "source": "fixture-small5",
+  "rows": 13,
+  "pages": {
+    "a1": {
+      "rows": 2,
+      "sha256": "2293603ed1d70d13a1bf986eb7a22253cfb6e66ddadf9fd6ea3a0b0abd2ab7b7"
+    },
+    "b2": {
+      "rows": 1,
+      "sha256": "06a11b0fef8d985b1519eb41c0b07b6e330a41ee85e80f74168f27340daf4126"
+    },
+    "c3": {
+      "rows": 7,
+      "sha256": "6585b6056575dd5c390aa10657fdf470060a74505625be4956f19b696f4d1a43"
+    },
+    "d4": {
+      "rows": 3,
+      "sha256": "a14976848f727df67c1e245f65847e9f17b6cc3c9736428c138010ac364365af"
+    },
+    "e0": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}
