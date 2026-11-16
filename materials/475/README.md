@@ -1,0 +1,1 @@
+层目录包含manifest和不可变正文文件。file的inode以(layer,inode)命名，同层相同inode表示硬链接；symlink为target；whiteout path删除下层同路径及子树；opaque path只隐藏下层该目录子项。probe真实读取正文。
