@@ -1,0 +1,37 @@
+
+== multi-domain atomic admission ==
+{"global_active": 0, "global_tokens": "10", "ledger_reconcile": {"active_tickets": 0, "actual_active": {"global": 0, "tenant": 0}, "consistent": true, "expected_active": {"global": 0, "tenant": 0}, "tickets": 0}, "started": 0, "tenant_active": 0, "transport_started": [], "why_not": {"tenant": ["tokens"]}}
+{"global_tokens": "9", "started": ["r1"], "tenant_tokens": "0", "tick": 1, "ticket": {"admitted_at": 1, "cost": 1, "domains": ["global", "tenant"], "outcome": null, "request_id": "r1", "settled_at": null, "state": "active"}}
+{"active": [0, 0], "after_finish": {"admitted_at": 1, "cost": 1, "domains": ["global", "tenant"], "outcome": "completed", "request_id": "r1", "settled_at": 1, "state": "settled"}, "global_tokens": "9", "reconcile": {"active_tickets": 0, "actual_active": {"global": 0, "tenant": 0}, "consistent": true, "expected_active": {"global": 0, "tenant": 0}, "tickets": 1}, "tenant_tokens": "0"}
+
+== exact token accounting on a virtual clock ==
+{"refill_curve": [{"now": 0, "tokens": "0"}, {"now": 2, "tokens": "2/3"}, {"now": 3, "tokens": "1"}, {"now": 6, "tokens": "2"}, {"now": 9, "tokens": "3"}]}
+{"admitted_cost_2_at_0": "1"}
+{"admitted_again_at_3": true, "after_settle_tokens": "1", "final_tokens": "0", "second_at_same_clock": false, "tickets": [{"admitted_at": 0, "cost": 2, "domains": ["d"], "outcome": "completed", "request_id": "a", "settled_at": 1, "state": "settled"}, {"admitted_at": 3, "cost": 2, "domains": ["d"], "outcome": null, "request_id": "c", "settled_at": null, "state": "active"}]}
+
+== reject leaves no partial reservation ==
+{"a_active": 0, "a_tokens": "1", "admitted": false, "b_active": 0, "b_tokens": "0", "reasons": {"b": ["tokens"]}, "ticket": null}
+
+== 429 freezes only its scope; disjoint requests continue ==
+{"other_frozen_until": 0, "tenant_frozen_until": 100, "x_outcome": "throttled", "y_finished": "completed"}
+{"other_ticket": true, "tenant_ticket": null, "tick_10_started": 1, "transport_started": ["x", "y", "o"]}
+{"t2_started_at": 100, "t2_ticket": {"admitted_at": 100, "cost": 1, "domains": ["global", "tenant"], "outcome": null, "request_id": "t2", "settled_at": null, "state": "active"}, "t_started_at": 100}
+
+== an already-sent request is not withdrawn by a freeze ==
+{"freeze_a": 50, "live_state": "throttled", "live_ticket": {"admitted_at": 0, "cost": 1, "domains": ["a", "b"], "outcome": "throttled", "request_id": "live", "settled_at": 0, "state": "settled"}, "next_pending": "queued"}
+
+== cancel before and after send ==
+{"cancel_queued_after": {"g": {"active": 1, "frozen_until": 0, "tokens": "0"}, "h": {"active": 0, "frozen_until": 0, "tokens": "5"}, "pending": []}, "cancel_queued_before": {"g": {"active": 1, "frozen_until": 0, "tokens": "0"}, "h": {"active": 0, "frozen_until": 0, "tokens": "5"}, "pending": ["waiting"]}}
+{"cancel_active_returned": true, "events": [["submit", "flight", 1, ["h"], 1, 0], ["start", "flight", 1, ["h"], 1], ["cancel-active", "flight", 2], ["finish", "flight", 2, "cancelled"]], "h_active": 0, "h_tokens": "4", "late_response_delivered": false, "reconcile": {"active_tickets": 1, "actual_active": {"g": 1, "h": 0}, "consistent": true, "expected_active": {"g": 1, "h": 0}, "tickets": 2}, "ticket": {"admitted_at": 1, "cost": 1, "domains": ["h"], "outcome": "cancelled", "request_id": "flight", "settled_at": 2, "state": "settled"}}
+
+== FIFO within a priority, reservation against starvation ==
+[{"started": 1, "started_ids": ["solo"], "tick": 0}, {"started": 0, "started_ids": ["solo"], "tick": 2}, {"started": 1, "started_ids": ["solo", "big"], "tick": 4}, {"big_admitted_at": 4, "pending_order": ["small0", "small1", "small2", "small3"]}]
+
+== ThreadTransport: re-entrant callbacks and cancellation races ==
+{"active": 8, "reconcile_while_inflight": {"active_tickets": 8, "actual_active": {"g": 8, "t": 8}, "consistent": true, "expected_active": {"g": 8, "t": 8}, "tickets": 8}, "started": 8, "tokens": ["2", "2"]}
+{"cancelled": ["a0", "a2", "a4", "a6"], "lifecycle_active": [], "metering_domains": {"g": {"active": 0, "capacity": 10, "frozen": false, "frozen_until": 0, "max_active": 10, "per_ms": "1", "tokens": "3", "updated": 2}, "t": {"active": 0, "capacity": 10, "frozen": false, "frozen_until": 0, "max_active": 10, "per_ms": "1", "tokens": "4", "updated": 0}}, "reconcile": {"active_tickets": 0, "actual_active": {"g": 0, "t": 0}, "consistent": true, "expected_active": {"g": 0, "t": 0}, "tickets": 9}, "states": {"a0": "cancelled", "a1": "completed", "a2": "cancelled", "a3": "completed", "a4": "cancelled", "a5": "completed", "a6": "cancelled", "a7": "completed", "late": "completed"}}
+
+== metering and lifecycle are separately queryable ==
+{"lifecycle_active": ["first"], "lifecycle_pending": ["second"], "metering_domains": {"g": {"active": 1, "capacity": 2, "frozen": false, "frozen_until": 0, "max_active": 1, "per_ms": "1", "tokens": "0", "updated": 0}}, "metering_tickets": [{"admitted_at": 0, "cost": 1, "domains": ["g"], "outcome": null, "request_id": "first", "settled_at": null, "state": "active"}], "second_status": {"admission": {"admitted": false, "next_times": {"g": null}, "reasons": {"g": ["tokens", "concurrency"]}}, "found": true, "id": "second", "request": {"admitted_at": null, "attempts": 2, "cost": 1, "domains": ["g"], "finished_at": null, "id": "second", "outcome": null, "priority": 0, "seq": 1, "state": "queued", "submitted_at": 0}, "ticket": null}}
+
+all probe sections passed
