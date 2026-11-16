@@ -1,0 +1,1 @@
+AMQP适配边界接收有序basic.return和confirm事件；没有模拟撮合或数据库消息事务。return含原message_id而不含confirm tag。ledger真实SQLite保存投递事实。
