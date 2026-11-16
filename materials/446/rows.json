@@ -1,0 +1,26 @@
+[
+  {
+    "group": "g",
+    "key": 1,
+    "id": 1,
+    "value": "甲"
+  },
+  {
+    "group": "g",
+    "key": 3,
+    "id": 3,
+    "value": "丙"
+  },
+  {
+    "group": "g",
+    "key": 2,
+    "id": 2,
+    "value": "乙"
+  },
+  {
+    "group": "g",
+    "key": 4,
+    "id": 4,
+    "value": "丁"
+  }
+]
