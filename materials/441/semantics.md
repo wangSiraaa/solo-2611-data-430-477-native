@@ -1,0 +1,15 @@
+# 度量查询的有限语义合同
+
+这是有限 typed JSON AST 引擎，不声称完整实现 DAX。模型与请求都可替换，示例并非唯一合法输入。
+
+模型至多6表，每表0..2000行，列为int、text、nullable_int、nullable_text（bool不当作int）。主键非NULL且唯一。行必须精确覆盖声明列，外键可为NULL但非NULL值必须存在于父主键。每条关系从父主键指向子外键，类型兼容，所有关系形成的表图无环，同一父子表对允许两条关系、默认最多一条active。其余表对可以同时active。未知名称、类型不符、重复主键、悬空非NULL外键、关系环、度量引用环均应拒绝，错误不改变共享模型。
+
+Context区分filters、row_stack和局部relationships。filters的键为(table,column)，值为允许的有限值集合，空集合表示无行。对表有显式列约束，就称其受限，即便这个约束刚好覆盖当前表的所有行。受限父域沿当前active关系传播到子域；子外键须属于父可见主键集合，因此NULL不匹配。当父域既无直接约束也不受上游传播约束时，这条关系不剔除子表NULL外键行。多条传入约束取交集。Model.visible(table, context)本身就是公开的可复用域接口，须遵循此规则，不依赖先运行某个度量查询。当前源码以结果行数是否减少来判受限，存在错误。
+
+literal取int或NULL。sum跳过NULL，无非NULL值时返回NULL；countrows返回整数0或行数。add/mul恰好两个标量参数，任一为NULL结果NULL。column从row_stack倒序找最近的同表行，缺失时拒绝；它不直接读filter。sumx先枚举当前filter域的表行，逐行压入row_stack，求值后弹出，跳过NULL求和，无值返回NULL。sumx本身不触发filter转换，所以裸sum不因外层行环境自动变成该行的聚合。
+
+measure引用和calculate在求值表达式前做context transition：按外到内的row_stack为各列建立单值filter，替换同列旧filter，同表内层行覆盖同表外层，其余表行仍在。measure随后读取命名AST；calculate转换后，严格按modifiers数组从左到右执行。set替换指定列域；keep与现有域相交，没有旧域则采用给定域；remove删该列约束；relationship选择一个已声明关系，并在本次表达式内关闭同父子表对的其他关系。关系选择不修改共享模型；嵌套调用返回后恢复上层关系和filter。同一上下文下重复measure没有随机性。
+
+每条查询的filters是不同列的集合约束，group_by为0..2个不同列，expressions与labels等长且label唯一。分组先按初始filter域从各分组列取不同值，再取笛卡尔积；即使组合无事实行也保留这一组。NULL排第一，其余int按数值、text按Unicode顺序；分组列类型固定。每个组合把对应列filter设为单值后独立求各表达式，不能让上一表达式的关系选择污染下一表达式。允许空表；无group_by时始终一结果行，有group_by且某列域为空则无结果行。
+
+查询可用任意合法AST组合（深度≤24、节点≤2000，measure引用展开也计入），过滤值≤2000个。未知op、列/表/关系、缺失必需字段、错误参数类型都应在执行前拒绝。不得执行输入中的Python代码。Model、Evaluator、QueryEngine是可复用入口；同一Model连续或并发的不同请求结果不得串域。现有audit仅为诊断，可重新设计，不要求固定日志格式。实现可采用域集合解释、SQL下推或其他正确方案，可朴素重算，无缓存命中率或特定性能门槛。不要求文本DAX解析、双向关系、数据写入、任意UDF或分布式部署。

@@ -1,0 +1,19 @@
+[
+  {
+    "labels": [
+      "revenue"
+    ],
+    "expressions": [
+      {
+        "op": "measure",
+        "name": "Revenue"
+      }
+    ],
+    "group_by": [
+      {
+        "table": "Customers",
+        "column": "region"
+      }
+    ]
+  }
+]

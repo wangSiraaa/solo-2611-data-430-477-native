@@ -1,0 +1,63 @@
+[
+  {
+    "labels": [
+      "raw_sumx",
+      "measure_sumx"
+    ],
+    "expressions": [
+      {
+        "op": "sumx",
+        "table": "Customers",
+        "expr": {
+          "op": "sum",
+          "table": "Sales",
+          "column": "amount"
+        }
+      },
+      {
+        "op": "sumx",
+        "table": "Customers",
+        "expr": {
+          "op": "measure",
+          "name": "Revenue"
+        }
+      }
+    ]
+  },
+  {
+    "labels": [
+      "ship",
+      "order_after_ship"
+    ],
+    "filters": [
+      {
+        "table": "Calendar",
+        "column": "date",
+        "values": [
+          1
+        ]
+      }
+    ],
+    "expressions": [
+      {
+        "op": "calculate",
+        "expr": {
+          "op": "sum",
+          "table": "Sales",
+          "column": "amount"
+        },
+        "modifiers": [
+          {
+            "kind": "relationship",
+            "name": "ship_date"
+          }
+        ]
+      },
+      {
+        "op": "sum",
+        "table": "Sales",
+        "column": "amount"
+      }
+    ]
+  }
+]

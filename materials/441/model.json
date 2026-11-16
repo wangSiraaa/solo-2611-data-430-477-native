@@ -1,0 +1,109 @@
+{
+  "schemas": {
+    "Customers": {
+      "key": "id",
+      "columns": {
+        "id": "text",
+        "region": "text",
+        "factor": "int"
+      }
+    },
+    "Calendar": {
+      "key": "date",
+      "columns": {
+        "date": "int",
+        "month": "int"
+      }
+    },
+    "Sales": {
+      "key": "id",
+      "columns": {
+        "id": "text",
+        "customer_id": "nullable_text",
+        "order_date": "int",
+        "ship_date": "nullable_int",
+        "amount": "nullable_int"
+      }
+    }
+  },
+  "tables": {
+    "Customers": [
+      {
+        "id": "a",
+        "region": "east",
+        "factor": 2
+      },
+      {
+        "id": "b",
+        "region": "west",
+        "factor": 3
+      }
+    ],
+    "Calendar": [
+      {
+        "date": 1,
+        "month": 1
+      },
+      {
+        "date": 2,
+        "month": 2
+      }
+    ],
+    "Sales": [
+      {
+        "id": "s1",
+        "customer_id": "a",
+        "order_date": 1,
+        "ship_date": 2,
+        "amount": 10
+      },
+      {
+        "id": "s2",
+        "customer_id": "b",
+        "order_date": 1,
+        "ship_date": 1,
+        "amount": 30
+      },
+      {
+        "id": "s3",
+        "customer_id": null,
+        "order_date": 1,
+        "ship_date": null,
+        "amount": 7
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "name": "customer_sales",
+      "parent_table": "Customers",
+      "parent_column": "id",
+      "child_table": "Sales",
+      "child_column": "customer_id",
+      "active": true
+    },
+    {
+      "name": "order_date",
+      "parent_table": "Calendar",
+      "parent_column": "date",
+      "child_table": "Sales",
+      "child_column": "order_date",
+      "active": true
+    },
+    {
+      "name": "ship_date",
+      "parent_table": "Calendar",
+      "parent_column": "date",
+      "child_table": "Sales",
+      "child_column": "ship_date",
+      "active": false
+    }
+  ],
+  "measures": {
+    "Revenue": {
+      "op": "sum",
+      "table": "Sales",
+      "column": "amount"
+    }
+  }
+}
