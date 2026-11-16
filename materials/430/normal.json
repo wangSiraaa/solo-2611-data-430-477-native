@@ -1,0 +1,45 @@
+{
+  "snapshots": {
+    "s": {
+      "id": "s",
+      "sequence": 100,
+      "levels": [
+        [
+          "bid",
+          10,
+          5
+        ],
+        [
+          "ask",
+          11,
+          4
+        ]
+      ]
+    }
+  },
+  "events": [
+    {
+      "kind": "snapshot",
+      "symbol": "X",
+      "name": "s"
+    },
+    {
+      "kind": "delta",
+      "symbol": "X",
+      "id": "d101",
+      "first": 101,
+      "last": 101,
+      "levels": [
+        [
+          "bid",
+          10,
+          7
+        ]
+      ]
+    },
+    {
+      "kind": "observe",
+      "symbol": "X"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "snapshots": {
+    "s": {
+      "id": "s",
+      "sequence": 100,
+      "levels": [
+        [
+          "bid",
+          10,
+          5
+        ],
+        [
+          "ask",
+          11,
+          4
+        ]
+      ]
+    }
+  },
+  "events": [
+    {
+      "kind": "delta",
+      "symbol": "X",
+      "id": "d99-101",
+      "first": 99,
+      "last": 101,
+      "levels": [
+        [
+          "bid",
+          10,
+          7
+        ]
+      ]
+    },
+    {
+      "kind": "snapshot",
+      "symbol": "X",
+      "name": "s"
+    },
+    {
+      "kind": "delta",
+      "symbol": "X",
+      "id": "d103",
+      "first": 103,
+      "last": 103,
+      "levels": [
+        [
+          "ask",
+          11,
+          0
+        ]
+      ]
+    },
+    {
+      "kind": "observe",
+      "symbol": "X"
+    },
+    {
+      "kind": "delta",
+      "symbol": "X",
+      "id": "d102",
+      "first": 102,
+      "last": 102,
+      "levels": [
+        [
+          "bid",
+          9,
+          2
+        ]
+      ]
+    },
+    {
+      "kind": "observe",
+      "symbol": "X"
+    }
+  ]
+}
