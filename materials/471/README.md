@@ -1,0 +1,1 @@
+文件页+一层父目录可串行插入。split先写右页和旧叶的high/right，再安装parent，split_gate精确控制中间态。Navigator目前只信父目录。目标可以扩展多层内部页。
