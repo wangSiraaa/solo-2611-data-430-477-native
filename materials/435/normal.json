@@ -1,0 +1,19 @@
+[
+  {
+    "kind": "load",
+    "position": 1,
+    "code_id": "c",
+    "address": 100,
+    "size": 20,
+    "name": "outer",
+    "inline": []
+  },
+  {
+    "kind": "sample",
+    "position": 2,
+    "id": "s",
+    "pcs": [
+      105
+    ]
+  }
+]

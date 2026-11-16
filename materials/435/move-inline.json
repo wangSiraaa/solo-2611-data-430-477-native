@@ -1,0 +1,61 @@
+[
+  {
+    "kind": "load",
+    "position": 1,
+    "code_id": "c",
+    "address": 100,
+    "size": 20,
+    "name": "outer",
+    "inline": [
+      {
+        "id": "i",
+        "parent": null,
+        "start": 4,
+        "end": 12,
+        "name": "inner",
+        "callsite": "outer:7"
+      }
+    ]
+  },
+  {
+    "kind": "sample",
+    "position": 2,
+    "id": "before",
+    "pcs": [
+      105,
+      120
+    ]
+  },
+  {
+    "kind": "move",
+    "position": 3,
+    "code_id": "c",
+    "address": 200
+  },
+  {
+    "kind": "sample",
+    "position": 4,
+    "id": "after",
+    "pcs": [
+      205,
+      220
+    ]
+  },
+  {
+    "kind": "load",
+    "position": 5,
+    "code_id": "d",
+    "address": 100,
+    "size": 20,
+    "name": "new",
+    "inline": []
+  },
+  {
+    "kind": "sample",
+    "position": 6,
+    "id": "reuse",
+    "pcs": [
+      105
+    ]
+  }
+]
