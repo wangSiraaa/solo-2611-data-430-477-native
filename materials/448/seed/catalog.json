@@ -1,0 +1,23 @@
+[
+  {
+    "name": "r0",
+    "file": "r0.jsonl",
+    "default": false,
+    "lo": 0,
+    "hi": 10
+  },
+  {
+    "name": "r1",
+    "file": "r1.jsonl",
+    "default": false,
+    "lo": 10,
+    "hi": 20
+  },
+  {
+    "name": "other",
+    "file": "other.jsonl",
+    "default": true,
+    "lo": null,
+    "hi": null
+  }
+]
