@@ -1,0 +1,1 @@
+Device真实pread且已发读不可撤销，gate暂停物理完成。当前cancel过早释放scheduler的active和计费，使逻辑并发与真实设备不一致。Accounting目前按请求长度计服务，未区分EOF短读。
