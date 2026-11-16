@@ -1,0 +1,1 @@
+订阅源保留有限条未确认通知，可按sequence republish。控制notification与receive分开模拟网络丢包。没有真实OPC UA依赖，语义限本题。
