@@ -1,0 +1,32 @@
+{
+  "A": {
+    "occurrence_id": {
+      "type": "text",
+      "nullable": false
+    },
+    "k": {
+      "type": "int64",
+      "nullable": true
+    }
+  },
+  "B": {
+    "occurrence_id": {
+      "type": "text",
+      "nullable": false
+    },
+    "k": {
+      "type": "int64",
+      "nullable": true
+    }
+  },
+  "C": {
+    "occurrence_id": {
+      "type": "text",
+      "nullable": false
+    },
+    "k": {
+      "type": "int64",
+      "nullable": true
+    }
+  }
+}
