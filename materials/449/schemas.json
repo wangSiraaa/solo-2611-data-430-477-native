@@ -1,32 +1,23 @@
 {
   "A": {
-    "occurrence_id": {
-      "type": "text",
-      "nullable": false
-    },
-    "k": {
-      "type": "int64",
-      "nullable": true
-    }
+    "occurrence_id": {"type": "text", "nullable": false},
+    "k": {"type": "int64", "nullable": true},
+    "v": {"type": "text", "nullable": true},
+    "grp": {"type": "int64", "nullable": true},
+    "note": {"type": "text", "nullable": true}
   },
   "B": {
-    "occurrence_id": {
-      "type": "text",
-      "nullable": false
-    },
-    "k": {
-      "type": "int64",
-      "nullable": true
-    }
+    "occurrence_id": {"type": "text", "nullable": false},
+    "k": {"type": "int64", "nullable": true},
+    "v": {"type": "text", "nullable": true},
+    "grp": {"type": "int64", "nullable": true},
+    "note": {"type": "text", "nullable": true}
   },
   "C": {
-    "occurrence_id": {
-      "type": "text",
-      "nullable": false
-    },
-    "k": {
-      "type": "int64",
-      "nullable": true
-    }
+    "occurrence_id": {"type": "text", "nullable": false},
+    "k": {"type": "int64", "nullable": true},
+    "v": {"type": "text", "nullable": true},
+    "grp": {"type": "int64", "nullable": true},
+    "note": {"type": "text", "nullable": true}
   }
 }
